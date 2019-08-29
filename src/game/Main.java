@@ -18,6 +18,7 @@ public class Main implements Runnable{
 	private String title;
 	
 	//handler
+	@SuppressWarnings("unused")
 	private Handler handler;
 	
 	//clock
@@ -38,6 +39,7 @@ public class Main implements Runnable{
 //		display.getJFrame().addMouseMotionListener(mouseManager);
 //		display.getCanvas().addMouseListener(mouseManager);
 //		display.getCanvas().addMouseMotionListener(mouseManager);
+		
 	}
 	
 	public void run() {
@@ -51,7 +53,6 @@ public class Main implements Runnable{
 		long lastTime = System.nanoTime();
 		long timer = 0;
 		int ticks = 0;
-		long start_tick_length = System.nanoTime();
 		
 		while (running) {
 			now = System.nanoTime();
@@ -66,7 +67,6 @@ public class Main implements Runnable{
 				delta--;
 				if(delta > 1)
 					delta--;
-				start_tick_length = System.nanoTime();
 			}
 			if(timer >= 1000000000) {
 				System.out.println("[Main]\t\t" + ticks + " fps");
