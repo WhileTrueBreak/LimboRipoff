@@ -4,6 +4,8 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
 import game.display.Display;
+import game.inputs.KeyManager;
+import game.inputs.MouseManager;
 
 public class Main implements Runnable{
 	
@@ -16,6 +18,9 @@ public class Main implements Runnable{
 	
 	private int width, height;
 	private String title;
+	
+	private KeyManager keyManager;
+	private MouseManager mouseManager;
 	
 	//handler
 	@SuppressWarnings("unused")
@@ -33,12 +38,15 @@ public class Main implements Runnable{
 	private void init() {
 		display = new Display(title, width, height);
 		handler = new Handler(this);
+
+		keyManager = new KeyManager();
+		mouseManager = new MouseManager();
 		
-//		display.getJFrame().addKeyListener(keyManager);
-//		display.getJFrame().addMouseListener(mouseManager);
-//		display.getJFrame().addMouseMotionListener(mouseManager);
-//		display.getCanvas().addMouseListener(mouseManager);
-//		display.getCanvas().addMouseMotionListener(mouseManager);
+		display.getJFrame().addKeyListener(keyManager);
+		display.getJFrame().addMouseListener(mouseManager);
+		display.getJFrame().addMouseMotionListener(mouseManager);
+		display.getCanvas().addMouseListener(mouseManager);
+		display.getCanvas().addMouseMotionListener(mouseManager);
 		
 	}
 	
@@ -138,4 +146,13 @@ public class Main implements Runnable{
 	public Double getTimer() {
 		return timer;
 	}
+
+	public KeyManager getKeyManager() {
+		return keyManager;
+	}
+
+	public MouseManager getMouseManager() {
+		return mouseManager;
+	}
+	
 }
