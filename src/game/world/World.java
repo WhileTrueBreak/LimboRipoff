@@ -1,21 +1,33 @@
 package game.world;
 
-import game.Handler;
+import java.awt.Graphics;
+import java.util.ArrayList;
 
 public class World {
 	
-	private Handler handler;
-	
-	//managers
 	private LayerManager layerManager;
 	
-	public World(Handler handler, LayerManager layers) {
-		this.handler = handler;
+	private ArrayList<String>loadedFiles = new ArrayList<String>();
+	
+	public World() {
+		
+	}
+	
+	public void update() {
+		
+	}
+	
+	public void render(Graphics g) {
+		
+	}
+	
+	public void loadLevel(String file) {
+		if(loadedFiles.contains(file)) return;
+		
 	}
 
 	public LayerManager getLayerManager() {
 		return layerManager;
 	}
-	
-	
+
 }

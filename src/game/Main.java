@@ -6,6 +6,7 @@ import java.awt.image.BufferStrategy;
 import game.display.Display;
 import game.inputs.KeyManager;
 import game.inputs.MouseManager;
+import game.world.World;
 
 public class Main implements Runnable{
 	
@@ -13,9 +14,11 @@ public class Main implements Runnable{
 	private boolean running = false;
 	private Thread thread;
 	
+	//graphics
 	private BufferStrategy bs;
 	private Graphics g;
 	
+	//screen info
 	private int width, height;
 	private String title;
 	
@@ -25,6 +28,9 @@ public class Main implements Runnable{
 	//handler
 	@SuppressWarnings("unused")
 	private Handler handler;
+
+	//world
+	private World world;
 	
 	//clock
 	private double timer;
@@ -48,6 +54,27 @@ public class Main implements Runnable{
 		display.getCanvas().addMouseListener(mouseManager);
 		display.getCanvas().addMouseMotionListener(mouseManager);
 		
+		world = new World();
+		
+	}
+	
+	private void update() {
+		world.update();
+	}
+	
+	private void render() {
+		bs = display.getCanvas().getBufferStrategy();
+		if (bs == null) {
+			display.getCanvas().createBufferStrategy(3);
+			return;
+		}
+		g = bs.getDrawGraphics();
+		g.clearRect(0, 0, width, height);
+		// Draw Crap
+		world.render(g);
+		// End Crap
+		bs.show();
+		g.dispose();
 	}
 	
 	public void run() {
@@ -105,26 +132,6 @@ public class Main implements Runnable{
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-	}
-	
-
-	private void update() {
-		
-	}
-	
-	private void render() {
-		bs = display.getCanvas().getBufferStrategy();
-		if (bs == null) {
-			display.getCanvas().createBufferStrategy(3);
-			return;
-		}
-		g = bs.getDrawGraphics();
-		g.clearRect(0, 0, width, height);
-		// Draw Crap
-		
-		// End Crap
-		bs.show();
-		g.dispose();
 	}
 	
 	////////////////////////////////////////////////////////////////
