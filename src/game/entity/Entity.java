@@ -1,20 +1,21 @@
 package game.entity;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 import game.Handler;
+import utils.vector.Vector2;
 
 public abstract class Entity {
 	
-	protected float speed;
-	
 	protected Handler handler;
-	protected float x, y;
+	
+	protected Vector2 pos;
+	protected Rectangle hitbox;
 	
 	public Entity(Handler handler, int x, int y) {
 		this.handler = handler;
-		this.x = x;
-		this.y = y;
+		pos = new Vector2(x, y);
 	}
 	
 	public abstract void update();
