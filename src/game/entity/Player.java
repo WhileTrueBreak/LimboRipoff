@@ -23,7 +23,6 @@ public class Player extends Entity{
 	@Override
 	public void update() {
 		move();
-		//TODO refactor updateMovement
 		updateMotion();
 	}
 
