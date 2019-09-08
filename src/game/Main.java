@@ -5,6 +5,7 @@ import java.awt.image.BufferStrategy;
 
 import game.display.Camera;
 import game.display.Display;
+import game.graphics.Assets;
 import game.inputs.KeyManager;
 import game.inputs.MouseManager;
 import game.state.Game;
@@ -52,13 +53,15 @@ public class Main implements Runnable{
 		keyManager = new KeyManager();
 		mouseManager = new MouseManager();
 		
+		camera = new Camera(handler, 0, 0);
+		
 		display.getJFrame().addKeyListener(keyManager);
 		display.getJFrame().addMouseListener(mouseManager);
 		display.getJFrame().addMouseMotionListener(mouseManager);
 		display.getCanvas().addMouseListener(mouseManager);
 		display.getCanvas().addMouseMotionListener(mouseManager);
 		
-		camera = new Camera(handler, 0, 0);
+		Assets.init();
 		
 		game = new Game(handler);
 	}
