@@ -3,6 +3,7 @@ package game;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
+import game.display.Camera;
 import game.display.Display;
 import game.inputs.KeyManager;
 import game.inputs.MouseManager;
@@ -22,15 +23,18 @@ public class Main implements Runnable{
 	private int width, height;
 	private String title;
 	
+	//input
 	private KeyManager keyManager;
 	private MouseManager mouseManager;
 	
 	//handler
-	@SuppressWarnings("unused")
 	private Handler handler;
 
 	//game
 	private Game game;
+	
+	//camera
+	private Camera camera;
 	
 	//clock
 	private double timer;
@@ -54,8 +58,9 @@ public class Main implements Runnable{
 		display.getCanvas().addMouseListener(mouseManager);
 		display.getCanvas().addMouseMotionListener(mouseManager);
 		
-		game = new Game(handler);
+		camera = new Camera(handler, 0, 0);
 		
+		game = new Game(handler);
 	}
 	
 	private void update() {
@@ -134,9 +139,9 @@ public class Main implements Runnable{
 		}
 	}
 	
-	////////////////////////////////////////////////////////////////
-	
-	////////////////////////////////////////////////////////////////
+	/*************************************************************/
+	/**                   GETTERS AND SETTERS                   **/
+	/*************************************************************/
 	
 	public int getWidth() {
 		return width;
@@ -160,6 +165,10 @@ public class Main implements Runnable{
 
 	public MouseManager getMouseManager() {
 		return mouseManager;
+	}
+
+	public Camera getCamera() {
+		return camera;
 	}
 	
 }

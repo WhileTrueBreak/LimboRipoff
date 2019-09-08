@@ -1,5 +1,6 @@
 package game;
 
+import game.display.Camera;
 import game.inputs.KeyManager;
 import game.inputs.MouseManager;
 import game.world.LayerManager;
@@ -18,10 +19,6 @@ public class Handler {
 		return main;
 	}
 
-	public LayerManager getLayerManager() {
-		return world.getLayerManager();
-	}
-
 	public World getWorld() {
 		return world;
 	}
@@ -36,6 +33,14 @@ public class Handler {
 	
 	public MouseManager getMouseManager() {
 		return main.getMouseManager();
+	}
+	
+	public Camera getCamera() {
+		return main.getCamera();
+	}
+
+	public LayerManager getLayerManager() {
+		return world.getLayerManager();
 	}
 	
 	//https://pastebin.com/CGukyGrd

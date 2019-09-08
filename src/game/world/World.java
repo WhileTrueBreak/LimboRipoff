@@ -29,6 +29,7 @@ public class World {
 	
 	public void loadLevel(String file) {
 		if(loadedFiles.contains(file)) return;
+		loadedFiles.add(file);
 		//load graphics and lines from file
 	}
 
