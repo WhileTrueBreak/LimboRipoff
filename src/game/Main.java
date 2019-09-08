@@ -6,7 +6,7 @@ import java.awt.image.BufferStrategy;
 import game.display.Display;
 import game.inputs.KeyManager;
 import game.inputs.MouseManager;
-import game.world.World;
+import game.state.Game;
 
 public class Main implements Runnable{
 	
@@ -29,8 +29,8 @@ public class Main implements Runnable{
 	@SuppressWarnings("unused")
 	private Handler handler;
 
-	//world
-	private World world;
+	//game
+	private Game game;
 	
 	//clock
 	private double timer;
@@ -54,12 +54,12 @@ public class Main implements Runnable{
 		display.getCanvas().addMouseListener(mouseManager);
 		display.getCanvas().addMouseMotionListener(mouseManager);
 		
-		world = new World();
+		game = new Game(handler);
 		
 	}
 	
 	private void update() {
-		world.update();
+		game.update();
 	}
 	
 	private void render() {
@@ -71,7 +71,7 @@ public class Main implements Runnable{
 		g = bs.getDrawGraphics();
 		g.clearRect(0, 0, width, height);
 		// Draw Crap
-		world.render(g);
+		game.render(g);
 		// End Crap
 		bs.show();
 		g.dispose();
