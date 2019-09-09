@@ -15,7 +15,7 @@ public class CollisionHandler {
 			if(Collision.lineLine(cl.getPoint1().getX(), cl.getPoint1().getY(), cl.getPoint2().getX(), cl.getPoint2().getY(), 
 					oldPosition.getX(), oldPosition.getY(), newPosition.getX(), newPosition.getY())) collided = true;
 			if(Collision.lineRect(cl.getPoint1().getX(), cl.getPoint1().getY(), cl.getPoint2().getX(), cl.getPoint2().getY(), 
-					hitbox.x, hitbox.y, hitbox.width, hitbox.height)) collided = true;
+					newPosition.getX(), newPosition.getY(), hitbox.width, hitbox.height)) collided = true;
 			if(collided) collidedLines.add(cl);
 		}
 		return collidedLines;

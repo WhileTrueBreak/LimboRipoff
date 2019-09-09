@@ -2,7 +2,18 @@
 0 0
 !layer
 !line
-x1 y1 x2 y2
+0 0 600 300
+!graphics
+id x y
+!layer
+!line
+0 0 400 400
+800 400 400 400
+!graphics
+id x y
+!layer
+!line
+0 0 600 500
 !graphics
 id x y
 !end

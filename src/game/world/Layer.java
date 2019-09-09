@@ -10,11 +10,13 @@ public class Layer {
 
 	private Handler handler;
 	
-	private CollisionLineManager clm = new CollisionLineManager();
-	private GraphicsManager gm = new GraphicsManager(handler);
+	private CollisionLineManager clm;
+	private GraphicsManager gm;
 	
 	public Layer(Handler handler){
 		this.handler = handler;
+		clm = new CollisionLineManager(handler);
+		gm = new GraphicsManager(handler);
 	}
 	
 	public void update() {
@@ -23,6 +25,7 @@ public class Layer {
 	
 	public void render(Graphics g) {
 		gm.render(g);
+		clm.render(g);
 	}
 
 	public CollisionLineManager getCollisionLineManager() {

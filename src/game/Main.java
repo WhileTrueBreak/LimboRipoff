@@ -1,5 +1,7 @@
 package game;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
@@ -96,6 +98,7 @@ public class Main implements Runnable{
 		long lastTime = System.nanoTime();
 		long timer = 0;
 		int ticks = 0;
+		long start_tick_length = System.nanoTime();
 		
 		while (running) {
 			now = System.nanoTime();
@@ -104,12 +107,16 @@ public class Main implements Runnable{
 			this.timer = timer;
 			lastTime = now;
 			if(delta >= 1) {
-				update();
-				render();
+				if(handler.getCurrentFps()/1!=0) {
+					update();
+					render();
+				}
 				ticks++;
 				delta--;
 				if(delta > 1)
 					delta--;
+				handler.setCurrentFps(1000000000/(System.nanoTime()-start_tick_length));
+				start_tick_length = System.nanoTime();
 			}
 			if(timer >= 1000000000) {
 				System.out.println("[Main]\t\t" + ticks + " fps");
@@ -117,7 +124,6 @@ public class Main implements Runnable{
 				timer = 0;
 			}
 		}
-		
 		stop();
 	}
 		
@@ -172,6 +178,10 @@ public class Main implements Runnable{
 
 	public Camera getCamera() {
 		return camera;
+	}
+
+	public Game getGame() {
+		return game;
 	}
 	
 }

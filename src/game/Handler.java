@@ -3,6 +3,7 @@ package game;
 import game.display.Camera;
 import game.inputs.KeyManager;
 import game.inputs.MouseManager;
+import game.state.Game;
 import game.world.LayerManager;
 import game.world.World;
 
@@ -11,12 +12,22 @@ public class Handler {
 	private Main main;
 	private World world;
 	
+	private double currentFps;
+	
 	public Handler(Main main) {
 		this.main = main;
 	}
 
 	public Main getMain() {
 		return main;
+	}
+
+	public int getWidth() {
+		return main.getWidth();
+	}
+
+	public int getHeight() {
+		return main.getHeight();
 	}
 
 	public World getWorld() {
@@ -46,6 +57,22 @@ public class Handler {
 	//https://pastebin.com/CGukyGrd
 	public String getDir() {
 		return System.getProperty("user.dir");
+	}
+	
+	public Game getGame() {
+		return main.getGame();
+	}
+
+	public double getCurrentFps() {
+		return currentFps;
+	}
+
+	public void setCurrentFps(double currentFps) {
+		this.currentFps = currentFps;
+	}
+	
+	public double getSpeedMult() {
+		return 1/currentFps;
 	}
 	
 }

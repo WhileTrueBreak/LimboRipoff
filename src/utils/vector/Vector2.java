@@ -20,24 +20,28 @@ public class Vector2 {
 		return Math.hypot(x, y);
 	}
 	
-	public void mult(float n) {
+	public Vector2 mult(float n) {
 		x *= n;
 		y *= n;
+		return this;
 	}
 	
-	public void div(float n) {
+	public Vector2 div(float n) {
 		x /= n;
 		y /= n;
+		return this;
 	}
 	
-	public void add(Vector2 v) {
+	public Vector2 add(Vector2 v) {
 		x += v.getX();
 		y += v.getY();
+		return this;
 	}
 	
-	public void sub(Vector2 v) {
+	public Vector2 sub(Vector2 v) {
 		x -= v.getX();
 		y -= v.getY();
+		return this;
 	}
 	
 	public float dot(Vector2 v) {
@@ -89,5 +93,9 @@ public class Vector2 {
 	
 	public static Vector2 sub(Vector2 v1, Vector2 v2) {
 		return new Vector2(v1.getX()-v2.getX(), v1.getY()-v2.getY());
+	}
+	
+	public static Vector2 fromAngle(double theta) {
+		return new Vector2((float)Math.cos(theta), (float)Math.sin(theta));
 	}
 }

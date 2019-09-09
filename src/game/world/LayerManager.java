@@ -9,10 +9,11 @@ public class LayerManager {
 	
 	private Handler handler;
 	
-	private ArrayList<Layer> layers = new ArrayList<Layer>();
+	private Layer[] layers;
 	
-	public LayerManager(Handler handler) {
+	public LayerManager(Handler handler, int layerNum) {
 		this.handler = handler;
+		this.layers = new Layer[layerNum];
 	}
 	
 	public void update() {
@@ -23,24 +24,24 @@ public class LayerManager {
 		for(Layer l:layers) l.render(g);
 	}
 
-	public ArrayList<Layer> getLayers() {
+	public Layer[] getLayers() {
 		return layers;
 	}
-
-	public void setLayers(ArrayList<Layer> layers) {
-		this.layers = layers;
+	
+	public Layer getLayer(int index) {
+		return layers[index];
 	}
 
-	public void addLayer(Layer layer) {
-		layers.add(layer);
+	public void addLayer(Layer layer, int index) {
+		layers[index] = layer;
 	}
 	
-	public void removeLayer(Layer layer) {
-		layers.remove(layer);
+	public void removeLayer(int index) {
+		layers[index] = null;
 	}
 	
-	public ArrayList<Layer> resetLayers() {
-		return layers = new ArrayList<Layer>();
+	public void resetLayers() {
+		layers = new Layer[layers.length];
 	}
 	
 }
