@@ -20,9 +20,8 @@ public class CollisionLineManager {
 	
 	public ArrayList<CollisionLine> getLinesFromFile(String file){
 		ArrayList<CollisionLine> linesFromFile = new ArrayList<CollisionLine>();
-		for(CollisionLine line:lines) {
+		for(CollisionLine line:lines)
 			if(line.getFile()==file) linesFromFile.add(line);
-		}
 		return linesFromFile;
 	}
 	
