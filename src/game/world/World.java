@@ -73,10 +73,10 @@ public class World {
 				case "!line":
 					String[] linePosition = line.split("\\s+");
 					handler.getLayerManager().getLayer(currentLayer).getCollisionLineManager().addLine(new CollisionLine(
-							Integer.parseInt(linePosition[0]), 
-							Integer.parseInt(linePosition[1]), 
-							Integer.parseInt(linePosition[2]), 
-							Integer.parseInt(linePosition[3]), level));
+							Integer.parseInt(linePosition[0])+reletivePosition.getX(), 
+							Integer.parseInt(linePosition[1])+reletivePosition.getY(), 
+							Integer.parseInt(linePosition[2])+reletivePosition.getX(), 
+							Integer.parseInt(linePosition[3])+reletivePosition.getY(), level));
 					break;
 				case "!graphic":
 					break;
