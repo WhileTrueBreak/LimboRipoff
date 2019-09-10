@@ -64,14 +64,13 @@ public class Player extends Entity{
 		ArrayList<CollisionLine> done = new ArrayList<CollisionLine>();
 		long start_time = System.nanoTime();
 		while(lines.size() != 0) {
-			//check if collision takes too long
-			if(System.nanoTime()-start_time>100000) {
+			CollisionLine line = lines.get(0);
+			//line was checked before
+			if(done.contains(line)) {
 				//stops all motion
 				vel.mult(0);
 				break;
 			}
-			CollisionLine line = lines.get(0);
-			if(done.contains(line)) continue;
 			//CollisionNormal
 			double perpendicularGrad = -1/line.getGradient();
 			double lineAngle = Math.atan2(perpendicularGrad,1);
