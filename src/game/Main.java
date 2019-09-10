@@ -1,8 +1,7 @@
 package game;
 
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
 
 import game.display.Camera;
@@ -108,6 +107,8 @@ public class Main implements Runnable{
 			lastTime = now;
 			if(delta >= 1) {
 				if(handler.getCurrentFps()/1!=0) {
+					width = Toolkit.getDefaultToolkit().getScreenSize().width;
+					height = Toolkit.getDefaultToolkit().getScreenSize().height;
 					update();
 					render();
 				}

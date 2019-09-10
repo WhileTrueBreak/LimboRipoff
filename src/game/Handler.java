@@ -1,6 +1,7 @@
 package game;
 
 import game.display.Camera;
+import game.display.Display;
 import game.inputs.KeyManager;
 import game.inputs.MouseManager;
 import game.state.Game;
@@ -61,6 +62,10 @@ public class Handler {
 	
 	public Game getGame() {
 		return main.getGame();
+	}
+	
+	public Display getDisplay() {
+		return main.getDisplay();
 	}
 
 	public double getCurrentFps() {

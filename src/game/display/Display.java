@@ -47,4 +47,11 @@ public class Display {
 		return frame;
 	}
 	
+	public void resizeWindow(int width, int height) {
+		frame.setSize(width,height);
+		canvas.setPreferredSize(new Dimension(width, height));
+		canvas.setMaximumSize(new Dimension(width, height));
+		canvas.setMinimumSize(new Dimension(width, height));
+	}
+	
 }
