@@ -15,7 +15,7 @@ import utils.vector.Vector2;
 public class Player extends Entity{
 
 	private final float JUMP_FORCE = 0.5f; //the force acted on one frame
-	private final float SPEED = 200; //pixels per second
+	private final float SPEED = 300; //pixels per second
 	private final float AIR_SPEED = 1f; //pixels per second
 
 	private final float MAX_SLOPE_ANGLE = 30;
@@ -62,7 +62,15 @@ public class Player extends Entity{
 		Vector2 tmpPos = Vector2.add(pos.copy(), vel.copy());
 		ArrayList<CollisionLine> lines = CollisionHandler.getCollision(hitbox, pos.copy(), tmpPos.copy(), handler.getLayerManager().getLayer(handler.getGame().getCurrentPlayerLayer()).getCollisionLineManager().getLines());
 		ArrayList<CollisionLine> done = new ArrayList<CollisionLine>();
-		for(CollisionLine line:lines) {
+		long start_time = System.nanoTime();
+		while(lines.size() != 0) {
+			//check if collision takes too long
+			if(System.nanoTime()-start_time>100000) {
+				//stops all motion
+				vel.mult(0);
+				break;
+			}
+			CollisionLine line = lines.get(0);
 			if(done.contains(line)) continue;
 			//CollisionNormal
 			double perpendicularGrad = -1/line.getGradient();
@@ -82,15 +90,12 @@ public class Player extends Entity{
 			tmpPos = Vector2.add(pos, vel);
 			done.add(line);
 			lines = CollisionHandler.getCollision(hitbox, pos.copy(), tmpPos.copy(), handler.getLayerManager().getLayer(handler.getGame().getCurrentPlayerLayer()).getCollisionLineManager().getLines());
-			lines.removeAll(done);
+			//lines.removeAll(done);
+			lines.remove(line);
 		}
 		pos.add(vel);
 		if(onGround) vel.mult(ON_GROUND_FRICTION);
 		else vel.mult(IN_AIR_FRICTION);
-
-		//		if(onGround) vel.setX((float)(vel.getX()*ON_GROUND_FRICTION));
-		//		else vel.setX((float)(vel.getX()*IN_AIR_FRICTION));
-		//		vel.setY((float)(vel.getY()*IN_AIR_FRICTION));
 		acc.mult(0);
 	}
 
