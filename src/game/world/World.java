@@ -10,7 +10,7 @@ public class World {
 
 	public static final int LAYER_NUM = 3;
 	
-	public static float GRAVITY = 5f;
+	public static float GRAVITY = 1f;
 
 	private Handler handler;
 
