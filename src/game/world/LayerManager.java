@@ -1,8 +1,6 @@
 package game.world;
 
 import java.awt.Graphics;
-import java.util.ArrayList;
-
 import game.Handler;
 
 public class LayerManager {

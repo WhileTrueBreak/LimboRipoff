@@ -16,8 +16,8 @@ public class Camera {
 	
 	public void focusOnEntity(Entity e, int spring) {
 		float cameraSpring = spring;
-		float setX = e.getX()-handler.getMain().getWidth()/2;
-		float setY = e.getY() - handler.getMain().getHeight()/2;
+		float setX = e.getX()-handler.getDisplay().getJFrame().getWidth()/2;
+		float setY = e.getY() - handler.getDisplay().getJFrame().getHeight()/2;
 		if(cameraSpring == 0)
 			move((setX-xoff), (setY-yoff));
 		else
@@ -26,8 +26,8 @@ public class Camera {
 	
 	public void focusOnPoint(int x, int y, int spring) {
 		float cameraSpring = spring;
-		float setX = x - handler.getMain().getWidth()/2;
-		float setY = y - handler.getMain().getHeight()/2;
+		float setX = x - handler.getDisplay().getJFrame().getWidth()/2;
+		float setY = y - handler.getDisplay().getJFrame().getHeight()/2;
 		if(cameraSpring == 0)
 			move((setX-xoff), (setY-yoff));
 		else

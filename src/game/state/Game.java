@@ -7,7 +7,6 @@ import java.awt.event.KeyEvent;
 
 import game.Handler;
 import game.entity.Player;
-import game.inputs.Binds;
 import game.world.World;
 import utils.vector.Vector2;
 
