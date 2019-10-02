@@ -19,10 +19,10 @@ public class CollisionLineManager {
 	public void render(Graphics g) {
 		g.setColor(new Color(0, 0, 0));
 		for(CollisionLine line:lines)
-			g.drawLine((int)(line.getPoint1().getX()+handler.getCamera().getXoff()), 
-					(int)(line.getPoint1().getY()+handler.getCamera().getXoff()), 
-					(int)(line.getPoint2().getX()+handler.getCamera().getXoff()), 
-					(int)(line.getPoint2().getY()+handler.getCamera().getXoff()));
+			g.drawLine((int)(line.getPoint1().getX()-handler.getCamera().getXoff()), 
+					(int)(line.getPoint1().getY()-handler.getCamera().getYoff()), 
+					(int)(line.getPoint2().getX()-handler.getCamera().getXoff()), 
+					(int)(line.getPoint2().getY()-handler.getCamera().getYoff()));
 	}
 	
 	public void addLine(CollisionLine line) {

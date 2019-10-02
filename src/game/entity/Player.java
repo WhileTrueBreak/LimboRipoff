@@ -62,7 +62,6 @@ public class Player extends Entity{
 		Vector2 tmpPos = Vector2.add(pos.copy(), vel.copy());
 		ArrayList<CollisionLine> lines = CollisionHandler.getCollision(hitbox, pos.copy(), tmpPos.copy(), handler.getLayerManager().getLayer(handler.getGame().getCurrentPlayerLayer()).getCollisionLineManager().getLines());
 		ArrayList<CollisionLine> done = new ArrayList<CollisionLine>();
-		long start_time = System.nanoTime();
 		while(lines.size() != 0) {
 			CollisionLine line = lines.get(0);
 			//line was checked before

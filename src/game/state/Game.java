@@ -32,6 +32,7 @@ public class Game {
 		world.update();
 		player.applyForce(Vector2.DOWN.copy().setMag(World.GRAVITY));
 		player.update();
+		handler.getCamera().focusOnEntity(player, 150);
 	}
 	
 	public void render(Graphics g) {
